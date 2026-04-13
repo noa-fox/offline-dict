@@ -58,3 +58,6 @@ Thumbs.db
 
 # Room schema export
 schemas/
+
+# Claude Code temp files
+.claude_prompt*.txt
