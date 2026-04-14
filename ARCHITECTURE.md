@@ -120,12 +120,13 @@ OfflineDict 是一款纯离线的 Android 英汉词典应用，内置 ECDICT 开
 | **DictDao.kt** | `data/local/` | 数据访问接口，提供三种查询：前缀匹配、FTS5 模糊搜索、精确查询 | ✅ |
 | **DictRepository.kt** | `data/repository/` | 数据仓库层，封装 DAO 调用，智能选择搜索策略（前缀/模糊），返回 `Flow` 响应式流 | ✅ |
 
-### 3.2 领域层 (domain/) — ❌ 待实现
+### 3.2 领域层 (domain/) — ✅ 已实现
 
 | 文件 | 路径 | 职责 | 状态 |
 |------|------|------|------|
-| **SearchWordsUseCase** | `domain/usecase/` | 封装搜索业务逻辑，接收查询参数，返回 `Flow<List<DictEntry>>` | ❌ |
-| **GetWordDetailUseCase** | `domain/usecase/` | 封装单词详情查询逻辑，返回 `Flow<DictEntry?>` | ❌ |
+| **UseCase.kt** | `domain/usecase/` | UseCase 基础接口定义 | ✅ |
+| **SearchWordsUseCase** | `domain/usecase/` | 封装搜索业务逻辑，接收查询参数，返回 `Flow<List<DictEntry>>` | ✅ |
+| **GetWordDetailUseCase** | `domain/usecase/` | 封装单词详情查询逻辑，返回 `Flow<DictEntry?>` | ✅ |
 
 ### 3.3 表现层 (ui/) — ❌ 待实现
 
@@ -134,8 +135,8 @@ OfflineDict 是一款纯离线的 Android 英汉词典应用，内置 ECDICT 开
 | **MainActivity.kt** | `ui/` | 应用入口 Activity，承载 Compose 导航 | ❌ |
 | **SearchScreen.kt** | `ui/screen/` | 搜索界面 Composable：搜索栏 + 结果列表 | ❌ |
 | **WordDetailScreen.kt** | `ui/screen/` | 单词详情界面 Composable：音标、释义、词形变化等 | ❌ |
-| **SearchViewModel.kt** | `ui/viewmodel/` | 搜索页面 ViewModel：管理搜索状态、防抖、结果流 | ❌ |
-| **WordDetailViewModel.kt** | `ui/viewmodel/` | 详情页面 ViewModel：管理选中单词、加载详情 | ❌ |
+| **SearchViewModel.kt** | `ui/viewmodel/` | 搜索页面 ViewModel：管理搜索状态、防抖、结果流 | ✅ |
+| **WordDetailViewModel.kt** | `ui/viewmodel/` | 详情页面 ViewModel：管理选中单词、加载详情 | ✅ |
 | **AppNavigation.kt** | `ui/navigation/` | Compose Navigation 路由配置 | ❌ |
 | **WordCard.kt** | `ui/component/` | 可复用的单词卡片组件 | ❌ |
 | **SearchBar.kt** | `ui/component/` | 可复用的搜索栏组件 | ❌ |
@@ -515,7 +516,7 @@ cp ecdict.db /path/to/offline-dict/app/src/main/assets/
 | **MainActivity** | ❌ | 0% | Manifest 中已声明，类未实现 |
 | **Compose UI** | ❌ | 0% | 搜索界面 + 详情界面待开发 |
 | **ViewModel 层** | ❌ | 0% | SearchViewModel + WordDetailViewModel |
-| **Domain UseCases** | ❌ | 0% | SearchWordsUseCase + GetWordDetailUseCase |
+| **Domain UseCases** | ✅ | 100% | SearchWordsUseCase + GetWordDetailUseCase + UseCase 基类 |
 | **搜索历史** | ❌ | 0% | 历史记录存储与展示 |
 | **收藏功能** | ❌ | 0% | 收藏单词的增删查 |
 | **词形变化处理** | ❌ | 0% | exchange 字段解析与展示 |
@@ -537,18 +538,19 @@ cp ecdict.db /path/to/offline-dict/app/src/main/assets/
 | `AndroidManifest.xml` | ✅ |
 | `strings.xml` | ✅ |
 | `themes.xml` | ✅ |
-| `scripts/import_ecdict.py` | ❌ |
+| `scripts/import_ecdict.py` | ✅ |
 | `app/src/main/assets/ecdict.db` | ❌ |
 | `ui/MainActivity.kt` | ❌ |
 | `ui/screen/SearchScreen.kt` | ❌ |
 | `ui/screen/WordDetailScreen.kt` | ❌ |
-| `ui/viewmodel/SearchViewModel.kt` | ❌ |
-| `ui/viewmodel/WordDetailViewModel.kt` | ❌ |
+| `ui/viewmodel/SearchViewModel.kt` | ✅ |
+| `ui/viewmodel/WordDetailViewModel.kt` | ✅ |
 | `ui/component/WordCard.kt` | ❌ |
 | `ui/component/SearchBar.kt` | ❌ |
 | `ui/navigation/AppNavigation.kt` | ❌ |
-| `domain/usecase/SearchWordsUseCase.kt` | ❌ |
-| `domain/usecase/GetWordDetailUseCase.kt` | ❌ |
+| `domain/usecase/UseCase.kt` | ✅ |
+| `domain/usecase/SearchWordsUseCase.kt` | ✅ |
+| `domain/usecase/GetWordDetailUseCase.kt` | ✅ |
 
 ---
 

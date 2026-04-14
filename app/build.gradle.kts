@@ -83,8 +83,12 @@ dependencies {
     // ViewModel Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
 
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.7.5")
+
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
     // Testing
     testImplementation("junit:junit:4.13.2")
